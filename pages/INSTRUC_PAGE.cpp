@@ -11,11 +11,11 @@ void Render_INSTRUC_PAGE(int &state)
 	GuiLabel((Rectangle){ 1, 70, 200, 20 }, "placing their token down until a row of three is");
 	GuiLabel((Rectangle){ 1, 90, 200, 20 }, "achieved or else its a tie.");
 
-	if (GuiButton((Rectangle){ (SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 200, BUTTON_WIDTH, BUTTON_HEIGHT}, "Load Game")) {
+	if (GuiButton((Rectangle){(SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 200, BUTTON_WIDTH, BUTTON_HEIGHT}, "Load Game")) {
 		state = MAIN_PAGE;
 	}
 
-	if (GuiButton((Rectangle){ (SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 250, BUTTON_WIDTH, BUTTON_HEIGHT}, "Exit")) {
+	if (GuiButton((Rectangle){(SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 250, BUTTON_WIDTH, BUTTON_HEIGHT}, "Exit")) {
 		state = EXIT_PAGE;
 	}
 }
