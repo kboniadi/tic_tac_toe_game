@@ -29,10 +29,6 @@ int main() {
 			break;
 		case SINGLE_PAGE:
 			Render_SINGLE_PAGE(name, MAX_INPUT_CHARS);
-			for (int i = 0; i < MAX_INPUT_CHARS + 1; i++) {
-				std::cout << name[i];
-			}
-			std::cout << std::endl;
 			break;
 		}
 
