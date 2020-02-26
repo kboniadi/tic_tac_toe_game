@@ -4,6 +4,6 @@
 #include "../LIMITS.h"
 #include "../raygui.h"
 
-bool Render_SINGLE_PAGE(char array[], const int ARRAY_SIZE);
+void Render_SINGLE_PAGE(int &state, char array[], const int ARRAY_SIZE, bool &mode, bool &n_checked, bool &h_checked);
 
 #endif	/* SINGLE_PAGE_H_ */

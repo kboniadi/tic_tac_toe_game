@@ -1621,7 +1621,10 @@ bool GuiTextBox(Rectangle bounds, char *text, int textSize, bool editMode)
                 }
             }
 
-            if (IsKeyPressed(KEY_ENTER) || (!CheckCollisionPointRec(mousePoint, bounds) && IsMouseButtonPressed(0))) pressed = true;
+            if (IsKeyPressed(KEY_ENTER) || (!CheckCollisionPointRec(mousePoint, bounds) && IsMouseButtonPressed(0))) {
+				pressed = false;
+				state = GUI_STATE_DISABLED;
+			}
 
             // Check text alignment to position cursor properly
             int textAlignment = GuiGetStyle(TEXTBOX, TEXT_ALIGNMENT);

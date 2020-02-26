@@ -5,6 +5,6 @@
 #include "../LIMITS.h"
 #include <iostream>
 
-void Render_MAIN_PAGE(int&);
+void Render_MAIN_PAGE(int&, char array[], char array2[], const int ARRAY_SIZE);
 
 #endif	/* MAIN_PAGE_H_ */
