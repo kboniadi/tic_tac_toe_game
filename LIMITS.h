@@ -20,5 +20,7 @@
 
 #define BUTTON_WIDTH		150
 #define BUTTON_HEIGHT		40
+#define BOARD_ROWS			3
+#define BOARD_COLUMNS		3
 
 #endif

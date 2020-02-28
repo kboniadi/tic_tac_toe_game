@@ -23,3 +23,16 @@ void Render_MAIN_PAGE(int &state, char array[], char array2[], const int ARRAY_S
 	}
 
 }
+
+void InitBoard(Index table[][BOARD_ROWS])
+{
+	for (int i = 0; i < BOARD_ROWS; i++) {
+		for (int j = 0; j < BOARD_COLUMNS; j++) {
+			table[i][j].rect.width = table[i][j].rect.height = 100;
+			table[i][j].rect.x = (j * 100) + 250;
+			table[i][j].rect.y = (i * 100) + 75;
+			table[i][j].type = ' ';
+			table[i][j].marked = false;
+		}
+	}
+}

@@ -13,9 +13,7 @@ void Render_INSTRUC_PAGE(int &state)
 
 	if (GuiButton((Rectangle){(SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 200, BUTTON_WIDTH, BUTTON_HEIGHT}, "Load Game")) {
 		state = MAIN_PAGE;
-	}
-
-	if (GuiButton((Rectangle){(SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 250, BUTTON_WIDTH, BUTTON_HEIGHT}, "Exit")) {
+	} else if (GuiButton((Rectangle){(SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 250, BUTTON_WIDTH, BUTTON_HEIGHT}, "Exit")) {
 		state = EXIT_PAGE;
 	}
 }
