@@ -1,11 +1,12 @@
 #include "SINGLE_PAGE.h"
 
-void Render_SINGLE_PAGE(int &state, char array[], const int ARRAY_SIZE, bool &mode, bool &n_checked, bool &h_checked)
+void Render_SINGLE_PAGE(int &state, char array[], char array2[], const int ARRAY_SIZE, bool &mode, bool &n_checked, bool &h_checked)
 {
 	char hard_mode[10] = "Hard Mode";
 	char normal_mode[12] = "Normal Mode";
-
 	Vector2 mousePoint = GetMousePosition();
+
+	strcpy(array2, "The Computer");
 
 	GuiSetStyle(DEFAULT, TEXT_SIZE, 40);
 

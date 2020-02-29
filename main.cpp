@@ -14,12 +14,12 @@ int main() {
 	bool normal_checked;
 	bool hard_checked;
 	bool playing_single_player;
-	int random_num;
 	bool gameOver;
 	bool draw;
 	bool playerMove;
 	int framesCounter;
 	char who_won;
+	int random_num;
 
 	playing_single_player = true;
 	state = INSTRUC_PAGE;
@@ -30,10 +30,9 @@ int main() {
 	normal_checked = true;
 	hard_checked = false;
 	who_won = ' ';
+	random_num = 0;
 
 	srand(time(NULL));
-
-	random_num = rand() % 2;
 
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE);
 
@@ -63,14 +62,22 @@ int main() {
 			break;
 		case MAIN_PAGE:
 			Render_MAIN_PAGE(state, player_1, player_2, MAX_INPUT_CHARS);
+
 			InitBoard(board);
+
 			gameOver = false;
 			draw = false;
-			playerMove = false;
+			random_num = rand() % 2;
+
+			if (random_num == 0)
+				playerMove = false;
+			else if (random_num == 1)
+				playerMove = true;
+
 			positions = 0;
 			break;
 		case SINGLE_PAGE:
-			Render_SINGLE_PAGE(state, player_1, MAX_INPUT_CHARS, editModeSingle, normal_checked, hard_checked);
+			Render_SINGLE_PAGE(state, player_1, player_2, MAX_INPUT_CHARS, editModeSingle, normal_checked, hard_checked);
 			playing_single_player = true;
 			break;
 		case MULTI_PAGE:
@@ -81,15 +88,16 @@ int main() {
 			Render_TABLE();
 
 			if (playing_single_player) {
-				GetAndCheckInp(board, gameOver, draw, positions, playerMove, x_token, o_token);
+				playerinput(board, gameOver, draw, playerMove, positions, x_token, o_token);
+				aiMove(board, gameOver, draw, playerMove, positions, x_token, o_token);
 				who_won = CheckWin(board, positions, gameOver, draw);
 			} else {
-				GetAndCheckInp(board, gameOver, draw, positions, playerMove, x_token, o_token);
+				GetAndCheckInp(board, gameOver, draw, playerMove, positions, x_token, o_token);
 				who_won = CheckWin(board, positions, gameOver, draw);
 			}
 
 			DrawToken(board);
-			
+
 			OutputWinner(player_1, player_2, who_won, gameOver, draw, state, framesCounter);
 			break;
 		}

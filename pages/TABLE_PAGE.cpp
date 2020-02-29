@@ -71,7 +71,7 @@ void DrawToken(Index table[][BOARD_ROWS])
 	}
 }
 
-void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie, int &turns, bool &whosGoing, Texture2D x_chip, Texture2D o_chip)
+void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
 {
 	int i;
 	int j;
@@ -101,6 +101,197 @@ void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie, int &turn
 							whosGoing = !whosGoing;
 							turns++;
 							found = true;
+					} else {
+						j++;
+					}
+				}
+				i++;
+			}
+		}
+	}
+}
+
+void aiMove(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
+{
+	int i;
+	int j;
+	int k;
+	int l;
+	bool found;
+	bool found2;
+
+	if (!endGame && !tie) {
+		i = 0;
+		found = false;
+		if (!whosGoing) {
+			while (!found && i < BOARD_ROWS) {
+				j = 0;
+				while (!found && j < BOARD_COLUMNS) {
+					if (!table[i][j].marked) {
+						table[i][j].type = 'o';
+						table[i][j].marked = true;
+						if (CheckWin(table, turns, endGame, tie) == 'o') {
+							table[i][j].token = o_chip;
+							whosGoing = !whosGoing;
+							turns++;
+							found = true;
+							return;
+						} else {
+							table[i][j].type = ' ';
+							table[i][j].marked = false;
+						}
+					}
+					j++;
+				}
+				i++;
+			}
+
+			k = 0;
+			found2 = false;
+			while (!found && k < BOARD_ROWS) {
+				l = 0;
+				while (!found && l < BOARD_COLUMNS) {
+					if (!table[k][l].marked) {
+						table[k][l].type = 'x';
+						table[k][l].marked = true;
+						if (CheckWin(table, turns, endGame, tie) == 'x') {
+							table[k][l].token = o_chip;
+							table[k][l].type = 'o';
+							whosGoing = !whosGoing;
+							turns++;
+							found2 = true;
+							return;
+						} else {
+							table[k][l].type = ' ';
+							table[k][l].marked = false;
+						}
+					}
+					l++;
+				}
+				k++;
+			}
+
+			if (!table[1][1].marked) {
+				table[1][1].token = o_chip;
+				table[1][1].type = 'o';
+				table[1][1].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (!table[0][0].marked) {
+				table[0][0].token = o_chip;
+				table[0][0].type = 'o';
+				table[0][0].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (!table[0][2].marked) {
+				table[0][2].token = o_chip;
+				table[0][2].type = 'o';
+				table[0][2].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (!table[2][0].marked) {
+				table[2][0].token = o_chip;
+				table[2][0].type = 'o';
+				table[2][0].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (!table[2][2].marked) {
+				table[2][2].token = o_chip;
+				table[2][2].type = 'o';
+				table[2][2].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (!table[0][1].marked) {
+				table[0][1].token = o_chip;
+				table[0][1].type = 'o';
+				table[0][1].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (!table[1][0].marked) {
+				table[1][0].token = o_chip;
+				table[1][0].type = 'o';
+				table[1][0].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (!table[1][2].marked) {
+				table[1][2].token = o_chip;
+				table[1][2].type = 'o';
+				table[1][2].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (!table[2][1].marked) {
+				table[2][1].token = o_chip;
+				table[2][1].type = 'o';
+				table[2][1].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			}
+		}
+	}
+}
+
+void playerinput(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
+{
+	int i;
+	int j;
+	bool found;
+	if (whosGoing) {
+		if (!endGame && !tie) {
+			Vector2 mousePoint = GetMousePosition();
+			i = 0;
+			found = false;
+			if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+				while (!found && i < BOARD_ROWS) {
+					j = 0;
+					while (!found && j < BOARD_COLUMNS) {
+						if (mousePoint.x > table[i][j].rect.x &&
+							mousePoint.y > table[i][j].rect.y &&
+							mousePoint.x < table[i][j].rect.x + 100 &&
+							mousePoint.y < table[i][j].rect.y + 100 && !table[i][j].marked) {
+								table[i][j].token = x_chip;
+								table[i][j].type = 'x';
+								table[i][j].marked = true;
+								whosGoing = !whosGoing;
+								turns++;
+								found = true;
+						} else {
+							j++;
+						}
+					}
+					i++;
+				}
+			}
+		}
+	}
+	if (!endGame && !tie) {
+		Vector2 mousePoint = GetMousePosition();
+		i = 0;
+		found = false;
+		if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+			while (!found && i < BOARD_ROWS) {
+				j = 0;
+				while (!found && j < BOARD_COLUMNS) {
+					if (mousePoint.x > table[i][j].rect.x &&
+						mousePoint.y > table[i][j].rect.y &&
+						mousePoint.x < table[i][j].rect.x + 100 &&
+						mousePoint.y < table[i][j].rect.y + 100 && !table[i][j].marked) {
+							if (whosGoing) {
+								table[i][j].token = x_chip;
+								table[i][j].type = 'x';
+								table[i][j].marked = true;
+								whosGoing = !whosGoing;
+								turns++;
+								found = true;
+							}
 					} else {
 						j++;
 					}
