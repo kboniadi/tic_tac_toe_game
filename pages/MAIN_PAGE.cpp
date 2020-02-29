@@ -1,6 +1,7 @@
 #include "MAIN_PAGE.h"
 
-void Render_MAIN_PAGE(int &state, char array[], char array2[], const int ARRAY_SIZE)
+void Render_MAIN_PAGE(int &state, char array[], char array2[],
+const int ARRAY_SIZE)
 {
 	GuiSetStyle(DEFAULT, TEXT_SIZE, 40);
 

@@ -5,6 +5,7 @@
 #include "../raygui.h"
 #include <cstring>
 
-void Render_SINGLE_PAGE(int &state, char array[], char array2[], const int ARRAY_SIZE, bool &mode, bool &n_checked, bool &h_checked);
+void Render_SINGLE_PAGE(int &state, char array[], char array2[],
+const int ARRAY_SIZE, bool &mode, bool &n_checked, bool &h_checked);
 
 #endif	/* SINGLE_PAGE_H_ */

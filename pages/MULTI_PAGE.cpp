@@ -1,6 +1,7 @@
 #include "MULTI_PAGE.h"
 
-void Render_MULTI_PAGE(int &state, char array[], char array2[], const int ARRAY_SIZE, bool &mode1, bool &mode2)
+void Render_MULTI_PAGE(int &state, char array[], char array2[],
+const int ARRAY_SIZE, bool &mode1, bool &mode2)
 {
 	Vector2 mousePoint = GetMousePosition();
 

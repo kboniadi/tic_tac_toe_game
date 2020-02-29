@@ -2,9 +2,6 @@
 
 void Render_TABLE()
 {
-
-	// GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
-
 	DrawLineEx((Vector2){350, 75}, (Vector2){350, 375}, (float) 5, BLACK);
 	DrawLineEx((Vector2){450, 75}, (Vector2){450, 375}, (float) 5, BLACK);
 	DrawLineEx((Vector2){250, 175}, (Vector2){550, 175}, (float) 5, BLACK);
@@ -71,7 +68,8 @@ void DrawToken(Index table[][BOARD_ROWS])
 	}
 }
 
-void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
+void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie,
+bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
 {
 	int i;
 	int j;
@@ -88,7 +86,8 @@ void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &who
 					if (mousePoint.x > table[i][j].rect.x &&
 						mousePoint.y > table[i][j].rect.y &&
 						mousePoint.x < table[i][j].rect.x + 100 &&
-						mousePoint.y < table[i][j].rect.y + 100 && !table[i][j].marked) {
+						mousePoint.y < table[i][j].rect.y + 100 &&
+						!table[i][j].marked) {
 							if (whosGoing) {
 								table[i][j].token = x_chip;
 								table[i][j].type = 'x';
@@ -111,7 +110,8 @@ void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &who
 	}
 }
 
-void aiMove(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
+void aiMove(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing,
+int &turns, Texture2D x_chip, Texture2D o_chip)
 {
 	int i;
 	int j;
@@ -148,9 +148,9 @@ void aiMove(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing, 
 
 			k = 0;
 			found2 = false;
-			while (!found && k < BOARD_ROWS) {
+			while (!found2 && k < BOARD_ROWS) {
 				l = 0;
-				while (!found && l < BOARD_COLUMNS) {
+				while (!found2 && l < BOARD_COLUMNS) {
 					if (!table[k][l].marked) {
 						table[k][l].type = 'x';
 						table[k][l].marked = true;
@@ -239,7 +239,8 @@ void aiMove(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing, 
 	}
 }
 
-void playerinput(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
+void playerinput(Index table[][BOARD_ROWS], bool endGame, bool tie,
+bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
 {
 	int i;
 	int j;
@@ -256,7 +257,8 @@ void playerinput(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGo
 						if (mousePoint.x > table[i][j].rect.x &&
 							mousePoint.y > table[i][j].rect.y &&
 							mousePoint.x < table[i][j].rect.x + 100 &&
-							mousePoint.y < table[i][j].rect.y + 100 && !table[i][j].marked) {
+							mousePoint.y < table[i][j].rect.y + 100 &&
+							!table[i][j].marked) {
 								table[i][j].token = x_chip;
 								table[i][j].type = 'x';
 								table[i][j].marked = true;
@@ -272,37 +274,10 @@ void playerinput(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGo
 			}
 		}
 	}
-	if (!endGame && !tie) {
-		Vector2 mousePoint = GetMousePosition();
-		i = 0;
-		found = false;
-		if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
-			while (!found && i < BOARD_ROWS) {
-				j = 0;
-				while (!found && j < BOARD_COLUMNS) {
-					if (mousePoint.x > table[i][j].rect.x &&
-						mousePoint.y > table[i][j].rect.y &&
-						mousePoint.x < table[i][j].rect.x + 100 &&
-						mousePoint.y < table[i][j].rect.y + 100 && !table[i][j].marked) {
-							if (whosGoing) {
-								table[i][j].token = x_chip;
-								table[i][j].type = 'x';
-								table[i][j].marked = true;
-								whosGoing = !whosGoing;
-								turns++;
-								found = true;
-							}
-					} else {
-						j++;
-					}
-				}
-				i++;
-			}
-		}
-	}
 }
 
-void OutputWinner(char *player_1, char *player_2, char winner, bool endGame, bool tie, int &state, int framesCounter)
+void OutputWinner(char *player_1, char *player_2, char winner, bool endGame,
+bool tie, int &state, int framesCounter)
 {
 	Rectangle endGameFade;
 

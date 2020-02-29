@@ -10,9 +10,9 @@ void Render_SINGLE_PAGE(int &state, char array[], char array2[], const int ARRAY
 
 	GuiSetStyle(DEFAULT, TEXT_SIZE, 40);
 
-	GuiLabel((Rectangle){(SCREEN_WIDTH / 2) - (MeasureTextEx(GuiGetFont(), "SINGLE Player Mode", 40,
-	GuiGetStyle(DEFAULT, TEXT_SPACING)).x / 2), 10, MeasureTextEx(GuiGetFont(), "SINGLE Player Mode", 40,
-	GuiGetStyle(DEFAULT, TEXT_SPACING)).x, 40 }, "SINGLE Player Mode");
+	GuiLabel((Rectangle){(SCREEN_WIDTH / 2) - (MeasureTextEx(GuiGetFont(), "Single Player Mode", 40,
+	GuiGetStyle(DEFAULT, TEXT_SPACING)).x / 2), 10, MeasureTextEx(GuiGetFont(), "Single Player Mode", 40,
+	GuiGetStyle(DEFAULT, TEXT_SPACING)).x, 40 }, "Single Player Mode");
 
 	GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 
