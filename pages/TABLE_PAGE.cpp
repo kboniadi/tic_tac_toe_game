@@ -68,6 +68,32 @@ void DrawToken(Index table[][BOARD_ROWS])
 	}
 }
 
+void printWhosGoing(bool whosGoing, bool endGame, bool tie, char *player_1, char *player_2)
+{
+	if (whosGoing && !endGame && !tie) {
+		GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
+
+		DrawTextEx(GuiGetFont(), player_1, (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), player_1, GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).x) - (MeasureTextEx(GuiGetFont(), " 's turn!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).x), 10 + (MeasureTextEx(GuiGetFont(), player_1, GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).y)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), BLACK);
+
+		DrawTextEx(GuiGetFont(), "'s turn!", (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), "'s turn!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).x), 10 + (MeasureTextEx(GuiGetFont(), player_1, GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).y)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), BLACK);
+	} else if (!whosGoing && !endGame && !tie) {
+		GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
+
+		DrawTextEx(GuiGetFont(), player_2, (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), player_2, GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).x) - (MeasureTextEx(GuiGetFont(), " 's turn!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).x), 10 + (MeasureTextEx(GuiGetFont(), player_2, GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).y)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), BLACK);
+
+		DrawTextEx(GuiGetFont(), "'s turn!", (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), "'s turn!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).x), 10 + (MeasureTextEx(GuiGetFont(), player_2, GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).y)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), BLACK);
+	}
+}
 void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie,
 bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
 {
@@ -110,7 +136,7 @@ bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
 	}
 }
 
-void aiMove(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing,
+void aiMove(Index table[][BOARD_ROWS], bool gameMode, bool endGame, bool tie, bool &whosGoing,
 int &turns, Texture2D x_chip, Texture2D o_chip)
 {
 	int i;
@@ -119,11 +145,12 @@ int &turns, Texture2D x_chip, Texture2D o_chip)
 	int l;
 	bool found;
 	bool found2;
+	int random;
 
 	if (!endGame && !tie) {
 		i = 0;
 		found = false;
-		if (!whosGoing) {
+		if (!whosGoing && !gameMode) {
 			while (!found && i < BOARD_ROWS) {
 				j = 0;
 				while (!found && j < BOARD_COLUMNS) {
@@ -231,6 +258,73 @@ int &turns, Texture2D x_chip, Texture2D o_chip)
 				table[2][1].token = o_chip;
 				table[2][1].type = 'o';
 				table[2][1].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			}
+		} else if (!whosGoing && gameMode) {
+			random = rand() % 9;
+
+			if (random == 0 && !table[0][0].marked) {
+				table[0][0].token = o_chip;
+				table[0][0].type = 'o';
+				table[0][0].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (random == 1 && !table[0][1].marked) {
+				table[0][1].token = o_chip;
+				table[0][1].type = 'o';
+				table[0][1].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (random == 2 && !table[0][2].marked) {
+				table[0][2].token = o_chip;
+				table[0][2].type = 'o';
+				table[0][2].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (random == 3 && !table[1][0].marked) {
+				table[1][0].token = o_chip;
+				table[1][0].type = 'o';
+				table[1][0].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (random == 4 && !table[1][1].marked) {
+				table[1][1].token = o_chip;
+				table[1][1].type = 'o';
+				table[1][1].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (random == 5 && !table[1][2].marked) {
+				table[1][2].token = o_chip;
+				table[1][2].type = 'o';
+				table[1][2].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (random == 6 && !table[2][0].marked) {
+				table[2][0].token = o_chip;
+				table[2][0].type = 'o';
+				table[2][0].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (random == 7 && !table[2][1].marked) {
+				table[2][1].token = o_chip;
+				table[2][1].type = 'o';
+				table[2][1].marked = true;
+				whosGoing = !whosGoing;
+				turns++;
+				return;
+			} else if (random == 8 && !table[2][2].marked) {
+				table[2][2].token = o_chip;
+				table[2][2].type = 'o';
+				table[2][2].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;

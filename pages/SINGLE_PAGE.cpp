@@ -1,10 +1,13 @@
 #include "SINGLE_PAGE.h"
 
-void Render_SINGLE_PAGE(int &state, char array[], char array2[], const int ARRAY_SIZE, bool &mode, bool &n_checked, bool &h_checked)
+bool Render_SINGLE_PAGE(int &state, char array[], char array2[], const int ARRAY_SIZE, bool &mode, bool &n_checked, bool &h_checked)
 {
 	char hard_mode[10] = "Hard Mode";
 	char normal_mode[12] = "Normal Mode";
 	Vector2 mousePoint = GetMousePosition();
+	bool gameMode;
+
+	gameMode = false;
 
 	strcpy(array2, "The Computer");
 
@@ -37,8 +40,16 @@ void Render_SINGLE_PAGE(int &state, char array[], char array2[], const int ARRAY
 		n_checked = false;
 	}
 
+	if (normal_mode_checked) {
+		gameMode = true;
+	} else if (hard_mode_checked) {
+		gameMode = false;
+	}
+
 	if (GuiButton((Rectangle){(SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 230, BUTTON_WIDTH, BUTTON_HEIGHT}, "Start"))
 		state = TABLE_PAGE;
 	else if (GuiButton((Rectangle){(SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 290, BUTTON_WIDTH, BUTTON_HEIGHT}, "Back"))
 		state = MAIN_PAGE;
+
+	return gameMode;
 }

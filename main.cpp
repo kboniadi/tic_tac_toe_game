@@ -17,6 +17,7 @@ int main() {
 	bool gameOver;
 	bool draw;
 	bool playerMove;
+	bool whatMode;
 	int framesCounter;
 	char who_won;
 	int random_num;
@@ -31,6 +32,7 @@ int main() {
 	hard_checked = false;
 	who_won = ' ';
 	random_num = 0;
+	whatMode = false;
 
 	srand(time(NULL));
 
@@ -77,7 +79,7 @@ int main() {
 			positions = 0;
 			break;
 		case SINGLE_PAGE:
-			Render_SINGLE_PAGE(state, player_1, player_2, MAX_INPUT_CHARS, editModeSingle, normal_checked, hard_checked);
+			whatMode = Render_SINGLE_PAGE(state, player_1, player_2, MAX_INPUT_CHARS, editModeSingle, normal_checked, hard_checked);
 			playing_single_player = true;
 			break;
 		case MULTI_PAGE:
@@ -89,9 +91,10 @@ int main() {
 
 			if (playing_single_player) {
 				playerinput(board, gameOver, draw, playerMove, positions, x_token, o_token);
-				aiMove(board, gameOver, draw, playerMove, positions, x_token, o_token);
+				aiMove(board, whatMode, gameOver, draw, playerMove, positions, x_token, o_token);
 				who_won = CheckWin(board, positions, gameOver, draw);
 			} else {
+				printWhosGoing(playerMove, gameOver, draw, player_1, player_2);
 				GetAndCheckInp(board, gameOver, draw, playerMove, positions, x_token, o_token);
 				who_won = CheckWin(board, positions, gameOver, draw);
 			}

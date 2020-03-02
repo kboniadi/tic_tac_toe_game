@@ -16,10 +16,12 @@ char CheckWin(Index table[][BOARD_ROWS], int turns,  bool &endGame, bool &tie);
 
 void DrawToken(Index table[][BOARD_ROWS]);
 
+void printWhosGoing(bool whosGoing, bool endGame, bool tie, char *player_1, char *player_2);
+
 void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie,
 bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip);
 
-void aiMove(Index table[][BOARD_ROWS], bool endGame, bool tie, bool &whosGoing,
+void aiMove(Index table[][BOARD_ROWS], bool gameMode, bool endGame, bool tie, bool &whosGoing,
 int &turns, Texture2D x_chip, Texture2D o_chip);
 
 void playerinput(Index table[][BOARD_ROWS], bool endGame, bool tie,
