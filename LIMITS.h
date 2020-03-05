@@ -23,4 +23,4 @@
 #define BOARD_ROWS			3
 #define BOARD_COLUMNS		3
 
-#endif
+#endif	/* LIMITS_H_ */

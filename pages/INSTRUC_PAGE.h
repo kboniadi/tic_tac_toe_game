@@ -6,4 +6,4 @@
 
 void Render_INSTRUC_PAGE(int&);
 
-#endif
+#endif	/* INSTRUC_PAGE_H_ */
