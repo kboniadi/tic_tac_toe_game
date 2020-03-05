@@ -2,12 +2,12 @@
 
 bool Render_SINGLE_PAGE(int &state, char array[], char array2[], const int ARRAY_SIZE, bool &mode, bool &n_checked, bool &h_checked)
 {
-	char hard_mode[10] = "Hard Mode";
-	char normal_mode[12] = "Normal Mode";
-	Vector2 mousePoint = GetMousePosition();
-	bool gameMode;
+	char		hard_mode[10] = "Hard Mode";
+	char		normal_mode[12] = "Normal Mode";
+	Vector2		mousePoint = GetMousePosition();
+	bool		gameMode;
 
-	gameMode = false;
+	gameMode	= false;
 
 	strcpy(array2, "The Computer");
 

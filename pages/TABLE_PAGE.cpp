@@ -10,7 +10,7 @@ void Render_TABLE()
 
 char CheckWin(Index table[][BOARD_ROWS], int turns,  bool &endGame, bool &tie)
 {
-	char winner;
+	char	winner;
 
 	winner = ' ';
 
@@ -96,9 +96,9 @@ void printWhosGoing(bool whosGoing, bool endGame, bool tie, char *player_1, char
 void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie,
 bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
 {
-	int i;
-	int j;
-	bool found;
+	int		i;
+	int		j;
+	bool	found;
 
 	if (!endGame && !tie) {
 		Vector2 mousePoint = GetMousePosition();
@@ -138,18 +138,17 @@ bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
 void aiMove(Index table[][BOARD_ROWS], bool gameMode, bool endGame, bool tie, bool &whosGoing,
 int &turns, Texture2D x_chip, Texture2D o_chip)
 {
-	int i;
-	int j;
-	int k;
-	int l;
-	bool found;
-	bool found2;
-	int random1;
-	int random2;
+	int		i;
+	int		j;
+	int		k;
+	int		l;
+	bool	found;
+	bool	found2;
+	int		random1;
+	int		random2;
 
 	random1 = rand() % 4;
 	random2 = rand() % 8;
-	std::cout << random1 << std::endl;
 
 	if (!endGame && !tie) {
 		i = 0;
@@ -338,9 +337,10 @@ int &turns, Texture2D x_chip, Texture2D o_chip)
 void playerinput(Index table[][BOARD_ROWS], bool endGame, bool tie,
 bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip)
 {
-	int i;
-	int j;
-	bool found;
+	int		i;
+	int		j;
+	bool	found;
+	
 	if (whosGoing) {
 		if (!endGame && !tie) {
 			Vector2 mousePoint = GetMousePosition();

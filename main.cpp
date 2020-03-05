@@ -8,19 +8,19 @@
 #include <iostream>
 
 int main() {
-	int state;
-	bool editModeSingle;
-	bool editModeMulti;
-	bool normal_checked;
-	bool hard_checked;
-	bool playing_single_player;
-	bool gameOver;
-	bool draw;
-	bool playerMove;
-	bool whatMode;
-	int framesCounter;
-	char who_won;
-	int random_num;
+	int		state;
+	bool	editModeSingle;
+	bool	editModeMulti;
+	bool	normal_checked;
+	bool	hard_checked;
+	bool	playing_single_player;
+	bool	gameOver;
+	bool	draw;
+	bool	playerMove;
+	bool	whatMode;
+	int		framesCounter;
+	char	who_won;
+	int		random_num;
 
 	playing_single_player = true;
 	state = INSTRUC_PAGE;
@@ -93,10 +93,12 @@ int main() {
 
 			if (playing_single_player) {
 				playerinput(board, gameOver, draw, playerMove, positions, x_token, o_token);
+				who_won = CheckWin(board, positions, gameOver, draw);
 				aiMove(board, whatMode, gameOver, draw, playerMove, positions, x_token, o_token);
 				who_won = CheckWin(board, positions, gameOver, draw);
 			} else {
 				printWhosGoing(playerMove, gameOver, draw, player_1, player_2);
+				who_won = CheckWin(board, positions, gameOver, draw);
 				GetAndCheckInp(board, gameOver, draw, playerMove, positions, x_token, o_token);
 				who_won = CheckWin(board, positions, gameOver, draw);
 			}
