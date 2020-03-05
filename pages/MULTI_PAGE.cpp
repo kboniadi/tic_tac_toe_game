@@ -9,7 +9,7 @@ const int ARRAY_SIZE, bool &mode1, bool &mode2)
 
 	GuiLabel((Rectangle){(SCREEN_WIDTH / 2) - (MeasureTextEx(GuiGetFont(), "Multiplayer Mode", 40,
 	GuiGetStyle(DEFAULT, TEXT_SPACING)).x / 2), 10, MeasureTextEx(GuiGetFont(), "Multiplayer Mode", 40,
-	GuiGetStyle(DEFAULT, TEXT_SPACING)).x, 40 }, "Multiplayer Mode");
+	GuiGetStyle(DEFAULT, TEXT_SPACING)).x, 40}, "Multiplayer Mode");
 
 	GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 

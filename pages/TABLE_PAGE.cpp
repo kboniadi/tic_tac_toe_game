@@ -33,24 +33,23 @@ char CheckWin(Index table[][BOARD_ROWS], int turns,  bool &endGame, bool &tie)
 		}
 	}
 
-	if(table[0][0].marked && table[1][1].marked && table[2][2].marked) {
-		if(table[0][0].type == table[1][1].type && table[1][1].type == table[2][2].type) {
+	if (table[0][0].marked && table[1][1].marked && table[2][2].marked) {
+		if (table[0][0].type == table[1][1].type && table[1][1].type == table[2][2].type) {
 			endGame = true;
 			winner = table[0][0].type;
 		}
 	}
 
-	if(table[2][0].marked && table[1][1].marked && table[0][2].marked) {
-		if(table[2][0].type == table[1][1].type && table[1][1].type == table[0][2].type) {
+	if (table[2][0].marked && table[1][1].marked && table[0][2].marked) {
+		if (table[2][0].type == table[1][1].type && table[1][1].type == table[0][2].type) {
 			endGame = true;
 			winner = table[2][0].type;
 		}
 	}
 
 	// if all positions are occupied, then it is a draw
-	if(turns > 8) {
+	if (turns > 8)
 		tie = true;
-	}
 
 	return winner;
 }
@@ -74,22 +73,22 @@ void printWhosGoing(bool whosGoing, bool endGame, bool tie, char *player_1, char
 		GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 
 		DrawTextEx(GuiGetFont(), player_1, (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), player_1, GuiGetStyle(DEFAULT, TEXT_SIZE),
-		GuiGetStyle(DEFAULT, TEXT_SPACING)).x) - (MeasureTextEx(GuiGetFont(), " 's turn!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).x) - (MeasureTextEx(GuiGetFont(), " 's turn! ", GuiGetStyle(DEFAULT, TEXT_SIZE),
 		GuiGetStyle(DEFAULT, TEXT_SPACING)).x), 10 + (MeasureTextEx(GuiGetFont(), player_1, GuiGetStyle(DEFAULT, TEXT_SIZE),
 		GuiGetStyle(DEFAULT, TEXT_SPACING)).y)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), BLACK);
 
-		DrawTextEx(GuiGetFont(), "'s turn!", (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), "'s turn!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		DrawTextEx(GuiGetFont(), "'s turn! ", (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), "'s turn! ", GuiGetStyle(DEFAULT, TEXT_SIZE),
 		GuiGetStyle(DEFAULT, TEXT_SPACING)).x), 10 + (MeasureTextEx(GuiGetFont(), player_1, GuiGetStyle(DEFAULT, TEXT_SIZE),
 		GuiGetStyle(DEFAULT, TEXT_SPACING)).y)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), BLACK);
 	} else if (!whosGoing && !endGame && !tie) {
 		GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 
 		DrawTextEx(GuiGetFont(), player_2, (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), player_2, GuiGetStyle(DEFAULT, TEXT_SIZE),
-		GuiGetStyle(DEFAULT, TEXT_SPACING)).x) - (MeasureTextEx(GuiGetFont(), " 's turn!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).x) - (MeasureTextEx(GuiGetFont(), " 's turn! ", GuiGetStyle(DEFAULT, TEXT_SIZE),
 		GuiGetStyle(DEFAULT, TEXT_SPACING)).x), 10 + (MeasureTextEx(GuiGetFont(), player_2, GuiGetStyle(DEFAULT, TEXT_SIZE),
 		GuiGetStyle(DEFAULT, TEXT_SPACING)).y)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), BLACK);
 
-		DrawTextEx(GuiGetFont(), "'s turn!", (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), "'s turn!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		DrawTextEx(GuiGetFont(), "'s turn! ", (Vector2){(SCREEN_WIDTH) - (MeasureTextEx(GuiGetFont(), "'s turn! ", GuiGetStyle(DEFAULT, TEXT_SIZE),
 		GuiGetStyle(DEFAULT, TEXT_SPACING)).x), 10 + (MeasureTextEx(GuiGetFont(), player_2, GuiGetStyle(DEFAULT, TEXT_SIZE),
 		GuiGetStyle(DEFAULT, TEXT_SPACING)).y)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), BLACK);
 	}
@@ -145,7 +144,12 @@ int &turns, Texture2D x_chip, Texture2D o_chip)
 	int l;
 	bool found;
 	bool found2;
-	int random;
+	int random1;
+	int random2;
+
+	random1 = rand() % 4;
+	random2 = rand() % 8;
+	std::cout << random1 << std::endl;
 
 	if (!endGame && !tie) {
 		i = 0;
@@ -205,56 +209,56 @@ int &turns, Texture2D x_chip, Texture2D o_chip)
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (!table[0][0].marked) {
+			} else if (!table[0][0].marked && random1 == 0) {
 				table[0][0].token = o_chip;
 				table[0][0].type = 'o';
 				table[0][0].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (!table[0][2].marked) {
+			} else if (!table[0][2].marked && random1 == 1) {
 				table[0][2].token = o_chip;
 				table[0][2].type = 'o';
 				table[0][2].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (!table[2][0].marked) {
+			} else if (!table[2][0].marked && random1 == 2) {
 				table[2][0].token = o_chip;
 				table[2][0].type = 'o';
 				table[2][0].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (!table[2][2].marked) {
+			} else if (!table[2][2].marked && random1 == 3) {
 				table[2][2].token = o_chip;
 				table[2][2].type = 'o';
 				table[2][2].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (!table[0][1].marked) {
+			} else if (!table[0][1].marked && random1 == 0) {
 				table[0][1].token = o_chip;
 				table[0][1].type = 'o';
 				table[0][1].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (!table[1][0].marked) {
+			} else if (!table[1][0].marked && random1 == 1) {
 				table[1][0].token = o_chip;
 				table[1][0].type = 'o';
 				table[1][0].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (!table[1][2].marked) {
+			} else if (!table[1][2].marked && random1 == 2) {
 				table[1][2].token = o_chip;
 				table[1][2].type = 'o';
 				table[1][2].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (!table[2][1].marked) {
+			} else if (!table[2][1].marked && random1 == 3) {
 				table[2][1].token = o_chip;
 				table[2][1].type = 'o';
 				table[2][1].marked = true;
@@ -263,8 +267,6 @@ int &turns, Texture2D x_chip, Texture2D o_chip)
 				return;
 			}
 		} else if (!whosGoing && gameMode) {
-			random = rand() % 9;
-
 			if (random == 0 && !table[0][0].marked) {
 				table[0][0].token = o_chip;
 				table[0][0].type = 'o';
@@ -272,56 +274,56 @@ int &turns, Texture2D x_chip, Texture2D o_chip)
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (random == 1 && !table[0][1].marked) {
+			} else if (random2 == 1 && !table[0][1].marked) {
 				table[0][1].token = o_chip;
 				table[0][1].type = 'o';
 				table[0][1].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (random == 2 && !table[0][2].marked) {
+			} else if (random2 == 2 && !table[0][2].marked) {
 				table[0][2].token = o_chip;
 				table[0][2].type = 'o';
 				table[0][2].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (random == 3 && !table[1][0].marked) {
+			} else if (random2 == 3 && !table[1][0].marked) {
 				table[1][0].token = o_chip;
 				table[1][0].type = 'o';
 				table[1][0].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (random == 4 && !table[1][1].marked) {
+			} else if (random2 == 4 && !table[1][1].marked) {
 				table[1][1].token = o_chip;
 				table[1][1].type = 'o';
 				table[1][1].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (random == 5 && !table[1][2].marked) {
+			} else if (random2 == 5 && !table[1][2].marked) {
 				table[1][2].token = o_chip;
 				table[1][2].type = 'o';
 				table[1][2].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (random == 6 && !table[2][0].marked) {
+			} else if (random2 == 6 && !table[2][0].marked) {
 				table[2][0].token = o_chip;
 				table[2][0].type = 'o';
 				table[2][0].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (random == 7 && !table[2][1].marked) {
+			} else if (random2 == 7 && !table[2][1].marked) {
 				table[2][1].token = o_chip;
 				table[2][1].type = 'o';
 				table[2][1].marked = true;
 				whosGoing = !whosGoing;
 				turns++;
 				return;
-			} else if (random == 8 && !table[2][2].marked) {
+			} else if (random2 == 8 && !table[2][2].marked) {
 				table[2][2].token = o_chip;
 				table[2][2].type = 'o';
 				table[2][2].marked = true;
@@ -403,25 +405,6 @@ bool tie, int &state, int framesCounter)
 
 		if (IsKeyPressed(KEY_ENTER))
 			state = MAIN_PAGE;
-	} else if (tie) {
-		DrawRectangleRec(endGameFade, (Color){0, 0, 0, 160});
-
-		GuiSetStyle(DEFAULT, TEXT_SIZE, 60);
-
-		DrawTextEx(GuiGetFont(), "It's a draw!", (Vector2){(SCREEN_WIDTH / 2) - (MeasureTextEx(GuiGetFont(), "It's a draw!", GuiGetStyle(DEFAULT, TEXT_SIZE),
-		GuiGetStyle(DEFAULT, TEXT_SPACING)).x / 2), (SCREEN_HEIGHT / 2) - (MeasureTextEx(GuiGetFont(), "It's a draw!", GuiGetStyle(DEFAULT, TEXT_SIZE),
-		GuiGetStyle(DEFAULT, TEXT_SPACING)).y / 2)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), WHITE);
-
-		GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
-
-		if (((framesCounter/30)%2 == 0)) {
-			DrawTextEx(GuiGetFont(), "Press ENTER to return to main menu", (Vector2){(SCREEN_WIDTH / 2) - (MeasureTextEx(GuiGetFont(), "Press ENTER to return to main menu", GuiGetStyle(DEFAULT, TEXT_SIZE),
-			GuiGetStyle(DEFAULT, TEXT_SPACING)).x / 2), (SCREEN_HEIGHT / 1.3) - (MeasureTextEx(GuiGetFont(), "Press ENTER to return to main menu", GuiGetStyle(DEFAULT, TEXT_SIZE),
-			GuiGetStyle(DEFAULT, TEXT_SPACING)).y / 2)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), WHITE);
-		}
-
-		if (IsKeyPressed(KEY_ENTER))
-			state = MAIN_PAGE;
 	} else if (endGame && winner == 'o') {
 		DrawRectangleRec(endGameFade, (Color){0, 0, 0, 160});
 
@@ -435,6 +418,25 @@ bool tie, int &state, int framesCounter)
 
 		DrawTextEx(GuiGetFont(), "Won!", (Vector2){(SCREEN_WIDTH / 2) - (MeasureTextEx(GuiGetFont(), "Won!", GuiGetStyle(DEFAULT, TEXT_SIZE),
 		GuiGetStyle(DEFAULT, TEXT_SPACING)).x / 2), (SCREEN_HEIGHT / 2)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), WHITE);
+
+		GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
+
+		if (((framesCounter/30)%2 == 0)) {
+			DrawTextEx(GuiGetFont(), "Press ENTER to return to main menu", (Vector2){(SCREEN_WIDTH / 2) - (MeasureTextEx(GuiGetFont(), "Press ENTER to return to main menu", GuiGetStyle(DEFAULT, TEXT_SIZE),
+			GuiGetStyle(DEFAULT, TEXT_SPACING)).x / 2), (SCREEN_HEIGHT / 1.3) - (MeasureTextEx(GuiGetFont(), "Press ENTER to return to main menu", GuiGetStyle(DEFAULT, TEXT_SIZE),
+			GuiGetStyle(DEFAULT, TEXT_SPACING)).y / 2)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), WHITE);
+		}
+
+		if (IsKeyPressed(KEY_ENTER))
+			state = MAIN_PAGE;
+	} else if (tie) {
+		DrawRectangleRec(endGameFade, (Color){0, 0, 0, 160});
+
+		GuiSetStyle(DEFAULT, TEXT_SIZE, 80);
+
+		DrawTextEx(GuiGetFont(), "It's a draw!", (Vector2){(SCREEN_WIDTH / 2) - (MeasureTextEx(GuiGetFont(), "It's a draw!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).x / 2), (SCREEN_HEIGHT / 2) - (MeasureTextEx(GuiGetFont(), "It's a draw!", GuiGetStyle(DEFAULT, TEXT_SIZE),
+		GuiGetStyle(DEFAULT, TEXT_SPACING)).y / 2)}, GuiGetStyle(DEFAULT, TEXT_SIZE), GuiGetStyle(DEFAULT, TEXT_SPACING), WHITE);
 
 		GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 

@@ -40,11 +40,13 @@ int main() {
 
     SetTargetFPS(FPS);
 
+	Font font = LoadFont("res/fonts/pixantiqua.png");
 	Texture2D x_token = LoadTexture("res/images/X.png");
 	Texture2D o_token = LoadTexture("res/images/O.png");
 
 	Index board[BOARD_ROWS][BOARD_COLUMNS];
 	int positions;
+	GuiSetFont(font);
 
 	gameOver = false;
 	draw = false;
@@ -109,6 +111,7 @@ int main() {
     }
 	UnloadTexture(x_token);
 	UnloadTexture(o_token);
+	UnloadFont(font);
 
     CloseWindow();
 

@@ -8,7 +8,7 @@
 
 #define MAX_BUTTONS 		6
 #define NUM_FRAMES			3
-#define MAX_INPUT_CHARS     13
+#define MAX_INPUT_CHARS     15
 #define INSTRUC_PAGE		0
 #define MAIN_PAGE			1
 #define SINGLE_PAGE			2
