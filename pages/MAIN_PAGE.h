@@ -3,11 +3,21 @@
 
 #include "../raygui.h"
 #include "../LIMITS.h"
-#include "../INDEX.h"
+//#include "../INDEX.h"
+#include "../GAME_DATA.h"
 #include <iostream>
 
-void Render_MAIN_PAGE(int&, char array[], char array2[], const int ARRAY_SIZE);
+struct MAIN_PAGE {
+	GAME_DATA	*data;
+	int			random_num;
+};
 
-void InitBoard(Index table[][BOARD_ROWS]);
+void Init_MAIN_PAGE(MAIN_PAGE *main_page, GAME_DATA *data);
+
+void Render_MAIN_PAGE(MAIN_PAGE *main_page);
+
+void Delete_MAIN_PAGE(MAIN_PAGE *main_page);
+
+void InitBoard(MAIN_PAGE *main_page);
 
 #endif	/* MAIN_PAGE_H_ */

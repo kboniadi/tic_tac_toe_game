@@ -3,31 +3,36 @@
 
 #include "../LIMITS.h"
 #include "../raygui.h"
-#include "../INDEX.h"
+#include "../GAME_DATA.h"
 #include <time.h>
 #include <stdlib.h>
 #include <iostream>
-// #include <stdio.h>
 #include <string.h>
 
-void Render_TABLE();
+struct TABLE_PAGE {
+	GAME_DATA	*data;
+	Texture2D	o_token;
+	Texture2D	x_token;
+};
 
-char CheckWin(Index table[][BOARD_ROWS], int turns,  bool &endGame, bool &tie);
+void Init_TABLE_PAGE(TABLE_PAGE *table_page, GAME_DATA *data);
 
-void DrawToken(Index table[][BOARD_ROWS]);
+void Render_TABLE(TABLE_PAGE *table_page);
 
-void printWhosGoing(bool whosGoing, bool endGame, bool tie, char *player_1, char *player_2);
+char CheckWin(TABLE_PAGE *table_page);
 
-void GetAndCheckInp(Index table[][BOARD_ROWS], bool endGame, bool tie,
-bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip);
+void DrawToken(TABLE_PAGE *table_page);
 
-void aiMove(Index table[][BOARD_ROWS], bool gameMode, bool endGame, bool tie, bool &whosGoing,
-int &turns, Texture2D x_chip, Texture2D o_chip);
+void printWhosGoing(TABLE_PAGE *table_page);
 
-void playerinput(Index table[][BOARD_ROWS], bool endGame, bool tie,
-bool &whosGoing, int &turns, Texture2D x_chip, Texture2D o_chip);
+void GetAndCheckInp(TABLE_PAGE *table_page);
 
-void OutputWinner(char *player_1, char *player_2, char winner, bool endGame,
-bool tie, int &state, int framesCounter);
+void aiMove(TABLE_PAGE *table_page);
+
+void playerinput(TABLE_PAGE *table_page);
+
+void OutputWinner(TABLE_PAGE *table_page);
+
+void Delete_TABLE_PAGE(TABLE_PAGE *table_page);
 
 #endif	/* TABLE_PAGE_H_ */

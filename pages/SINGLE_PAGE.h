@@ -3,9 +3,19 @@
 
 #include "../LIMITS.h"
 #include "../raygui.h"
+#include "../GAME_DATA.h"
 #include <cstring>
 
-bool Render_SINGLE_PAGE(int &state, char array[], char array2[],
-const int ARRAY_SIZE, bool &mode, bool &n_checked, bool &h_checked);
+struct SINGLE_PAGE {
+	GAME_DATA	*data;
+	bool		normal_checked;
+	bool		hard_checked;
+};
+
+void Init_SINGLE_PAGE(SINGLE_PAGE *single_page, GAME_DATA *data);
+
+void Render_SINGLE_PAGE(SINGLE_PAGE *single_page);
+
+void Delete_SINGLE_PAGE(SINGLE_PAGE *single_page);
 
 #endif	/* SINGLE_PAGE_H_ */

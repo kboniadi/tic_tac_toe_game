@@ -1,7 +1,11 @@
-#define RAYGUI_IMPLEMENTATION
 #include "INSTRUC_PAGE.h"
 
-void Render_INSTRUC_PAGE(int &state)
+void Init_INSTRUC_PAGE(INSTRUC_PAGE *instruc_page, GAME_DATA *data)
+{
+	instruc_page->data = data;
+}
+
+void Render_INSTRUC_PAGE(INSTRUC_PAGE *instruc_page)
 {
 	GuiSetStyle(DEFAULT, TEXT_SIZE, 30);
 
@@ -36,8 +40,13 @@ void Render_INSTRUC_PAGE(int &state)
 	GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 
 	if (GuiButton((Rectangle){(SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 250, BUTTON_WIDTH, BUTTON_HEIGHT}, "Load Game")) {
-		state = MAIN_PAGE;
+		instruc_page->data->state = MAIN_PAGE_ID;
 	} else if (GuiButton((Rectangle){(SCREEN_WIDTH / 2) - (BUTTON_WIDTH / 2), 300, BUTTON_WIDTH, BUTTON_HEIGHT}, "Exit")) {
-		state = EXIT_PAGE;
+		instruc_page->data->state = EXIT_PAGE_ID;
 	}
+}
+
+void Delete_INSTRUC_PAGE(INSTRUC_PAGE *instruc_page)
+{
+	
 }
