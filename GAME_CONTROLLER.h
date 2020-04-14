@@ -10,7 +10,7 @@
 
 struct GAME_CONTROLLER {
 	Font 			font;
-	INSTRUC_PAGE	instruc_page;
+	INSTRUC_PAGE		instruc_page;
 	MAIN_PAGE		main_page;
 	SINGLE_PAGE		single_page;
 	MULTI_PAGE		multi_page;
