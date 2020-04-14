@@ -1,11 +1,12 @@
 #ifndef TABLE_PAGE_H_
 #define TABLE_PAGE_H_
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "../LIMITS.h"
 #include "../raygui.h"
 #include "../GAME_DATA.h"
 #include <time.h>
-#include <stdlib.h>
 #include <iostream>
 #include <string.h>
 

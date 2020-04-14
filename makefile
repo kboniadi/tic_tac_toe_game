@@ -7,10 +7,10 @@ ifeq ($(UNAME), Linux)
 	CXXFLAGS=-Wall -D_DEFAULT_SOURCE -Wno-missing-braces -Wno-narrowing -Wno-enum-compare -s -O1 -Wl,-rpath,/home/kord/raylib/src -I/usr/local/include -isystem. -isystem/home/kord/raylib/src -isystem/home/kord/raylib/release/include -isystem/home/kord/raylib/src/external
 	LFLAGS=-L. -L/usr/local/lib -L/home/kord/raylib/src -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -lc -DPLATFORM_DESKTOP
 else
-	CC=g++-9 # define the compiler to use
+	CXX=g++-9 # define the compiler to use
 	TARGET=main # define the name of the executable
 	SOURCES=$(wildcard *.cpp */*.cpp)
-	CFLAGS=`pkg-config --cflags raylib`
+	CXXFLAGS=-Wno-narrowing -Wno-enum-compare `pkg-config --cflags raylib`
 	LFLAGS=`pkg-config --libs raylib`
 endif
 

@@ -1,6 +1,7 @@
 #ifndef GAME_DATA_H_
 #define GAME_DATA_H_
 
+#include <stdio.h>
 #include "raygui.h"
 #include "LIMITS.h"
 #include "INDEX.h"

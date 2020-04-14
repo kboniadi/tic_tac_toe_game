@@ -1,6 +1,7 @@
 #ifndef MULTI_PAGE_H_
 #define MULTI_PAGE_H_
 
+#include <stdio.h>
 #include "../LIMITS.h"
 #include "../raygui.h"
 #include "../GAME_DATA.h"

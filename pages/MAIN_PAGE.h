@@ -1,6 +1,7 @@
 #ifndef MAIN_PAGE_H_
 #define MAIN_PAGE_H_
 
+#include <stdio.h>
 #include "../raygui.h"
 #include "../LIMITS.h"
 #include "../GAME_DATA.h"

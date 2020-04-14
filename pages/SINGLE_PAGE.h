@@ -1,6 +1,7 @@
 #ifndef SINGLE_PAGE_H_
 #define SINGLE_PAGE_H_
 
+#include <stdio.h>
 #include "../LIMITS.h"
 #include "../raygui.h"
 #include "../GAME_DATA.h"
