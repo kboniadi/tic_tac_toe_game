@@ -1,8 +1,6 @@
 #ifndef INSTRUC_PAGE_H_
 #define INSTRUC_PAGE_H_
 
-//#include "../LIMITS.h"
-//#include "../raygui.h"
 #include "../GAME_DATA.h"
 
 struct INSTRUC_PAGE {

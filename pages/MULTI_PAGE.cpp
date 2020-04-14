@@ -2,7 +2,7 @@
 
 void Init_MULTI_PAGE(MULTI_PAGE *multi_page, GAME_DATA *data)
 {
-	multi_page->data			= data;
+	multi_page->data		= data;
 	multi_page->editModeMulti	= false;
 }
 

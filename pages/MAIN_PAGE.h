@@ -3,13 +3,12 @@
 
 #include "../raygui.h"
 #include "../LIMITS.h"
-//#include "../INDEX.h"
 #include "../GAME_DATA.h"
 #include <iostream>
 
 struct MAIN_PAGE {
 	GAME_DATA	*data;
-	int			random_num;
+	int		random_num;
 };
 
 void Init_MAIN_PAGE(MAIN_PAGE *main_page, GAME_DATA *data);

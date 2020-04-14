@@ -122,7 +122,7 @@ void GetAndCheckInp(TABLE_PAGE *table_page)
 {
 	int		i;
 	int		j;
-	bool	found;
+	bool		found;
 
 	if (!table_page->data->gameOver && !table_page->data->draw) {
 		Vector2 mousePoint = GetMousePosition();

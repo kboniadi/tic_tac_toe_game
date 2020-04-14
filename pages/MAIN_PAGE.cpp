@@ -1,7 +1,7 @@
 #include "MAIN_PAGE.h"
 
 void Init_MAIN_PAGE(MAIN_PAGE *main_page, GAME_DATA *data) {
-	main_page->data			= data;
+	main_page->data		= data;
 	main_page->random_num	= 0;
 }
 

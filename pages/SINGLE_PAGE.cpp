@@ -3,8 +3,8 @@
 void Init_SINGLE_PAGE(SINGLE_PAGE *single_page, GAME_DATA *data)
 {
 	single_page->data			= data;
-	single_page->normal_checked = true;
-	single_page->hard_checked	= false;
+	single_page->normal_checked	 	= true;
+	single_page->hard_checked		= false;
 }
 
 void Render_SINGLE_PAGE(SINGLE_PAGE *single_page)

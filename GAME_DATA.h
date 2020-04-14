@@ -7,14 +7,14 @@
 #include <cstring>
 
 struct GAME_DATA {
-	int			state;
+	int		state;
 	bool		editModeSingle;
 	bool		playing_single_player;
 	bool		gameOver;
 	bool		draw;
 	bool		playerMove;
 	bool		whatMode;
-	int			framesCounter;
+	int		framesCounter;
 	char		who_won;
 	char 		player_1[MAX_INPUT_CHARS + 1];
 	char 		player_2[MAX_INPUT_CHARS + 1];
