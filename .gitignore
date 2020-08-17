@@ -1,4 +1,5 @@
-main
 .DS_Store
-*.o
-*/*.o
+.idea
+cmake-build-debug/
+cmake-build-release/
+_build/
